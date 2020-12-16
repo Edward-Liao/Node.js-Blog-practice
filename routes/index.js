@@ -66,8 +66,7 @@ router.get('/archives/:id',function(req,res,next){
     articles.reverse();
 
     const data = convertPagination(articles, currentPage)
-
-    
+  
     res.render('index', {
        title:'express',
         articles: data.data,
@@ -99,16 +98,13 @@ router.get('/post/:id', function(req, res, next) {
             title: '找不到該文章'
           });
         }
-
         articlesRef.child(id).update({'counter':article.counter+1}); //觀看次數＋1
-
-
            return articlesRef.child(id).once('value');
       }).then(function(snapshot){
 
         article = snapshot.val();
-        console.log(categories[article.category].path);
-        console.log(article.counter); //顯示觀看次數
+        // console.log(categories[article.category].path);
+        // console.log(article.counter); //顯示觀看次數
         res.render('post', { 
           title: 'Express',
           article,

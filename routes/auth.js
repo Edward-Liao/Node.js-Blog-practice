@@ -4,9 +4,7 @@ const firebaseDb = require('../connections/firebase_admin');
 const app = require('../app');
 const { auth } = require('firebase-admin');
 const router = express.Router();
-
 const userRef = firebaseDb.ref('/user/');
-
 
 // 註冊頁面
 router.get('/signup', function(req, res) {
@@ -27,11 +25,8 @@ router.post('/signup',(req,res)=>{
   firebaseClient.auth().createUserWithEmailAndPassword(email,password)
   .then((user)=>{
     console.log('註冊成功');
-    
     const uid = userRef.push().key 
-    
     userRef.push().set({'email':email,'uid':uid,'name':name});
-    
     res.redirect('signin');
   })
   .catch((error)=>{
@@ -51,7 +46,16 @@ router.post('/signup',(req,res)=>{
       res.redirect('/dashboard');
     }else{
       const messages =req.flash('error');
-      console.log(messages);
+      
+    
+      for(var prop in messages ){
+        if(messages[prop] === 'The password is invalid or the user does not have a password.'){
+          messages[prop] = "密碼錯誤 請重新輸入！";
+        }else if(messages[prop] === 'There is no user record corresponding to this identifier. The user may have been deleted.'){
+          messages[prop] = "電子郵件錯誤或使用者不存在！";
+        }
+      }
+
       res.render('dashboard/signin', { 
         messages,
       hasErrors: messages.length > 0
