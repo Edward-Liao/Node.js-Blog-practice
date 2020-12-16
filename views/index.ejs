@@ -1,0 +1,41 @@
+<% extend('./layouts/layout')%>
+
+<div class="row my-4 justify-content-center">
+  <div class="col-md-9">
+    
+    <!-- 無內容則顯示以下 -->
+    <%if(articles.length==0){%>
+      <h2>此分類尚無文章</h2>
+      <a href="/">回到首頁</a>
+    <% } %>
+
+    <% for(let prop in articles) { %> 
+      <div class="card mb-3">
+        <div class="card-body">
+          <a href="/post/<%= articles[prop].id %>"> <h2 class="text-primary"><%= articles[prop].title %></h2></a>
+          <div class="d-flex flex-row text-secondary small">
+            <div class="p-2"><span class="fa fa-clock-o"></span> <%= moment(articles[prop].update_time * 1000).format('YYYY/MM/DD')%> </div>
+            <div class="p-2"><i class="fa fa-tag" aria-hidden="true"></i> 
+              <a href="/archives/<%= categories[articles[prop].category].path %>" class="text-info">
+                <%= categories[articles[prop].category].name %>
+              </a>
+            </div>
+          </div>
+          <div>
+            <%= striptags(articles[prop].content).slice(0,150) %>...
+          </div>
+        </div>
+      </div>
+    <% } %>
+
+
+  </div>
+</div>
+
+<!-- 分頁按鈕 -->
+<!-- 如果沒有內容就不顯示 -->
+<%if(!articles.length==0){%> 
+  <%- include('partials/pagination') %> 
+<% } %>
+  
+
