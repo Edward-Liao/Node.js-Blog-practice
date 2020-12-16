@@ -6,7 +6,11 @@
 
         <form method="POST" action="/auth/signin">
           <div class="form-group">
-            <label><%- messages %></label><br>
+          <%if(messages[0] === 'The password is invalid or the user does not have a password.'){%>
+            <label>* 密碼錯誤</label><br>
+          <%}else if(messages[0] === 'There is no user record corresponding to this identifier. The user may have been deleted.'){%>
+            <label>* 電子郵件錯誤或使用者不存在</label><br>
+          <% } %> 
             <label for="exampleInputEmail1">Email</label>
             <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="請輸入 email"
               required>

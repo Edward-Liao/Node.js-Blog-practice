@@ -51,6 +51,7 @@ router.post('/signup',(req,res)=>{
       res.redirect('/dashboard');
     }else{
       const messages =req.flash('error');
+      console.log(messages);
       res.render('dashboard/signin', { 
         messages,
       hasErrors: messages.length > 0
