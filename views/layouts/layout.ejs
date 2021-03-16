@@ -1,71 +1,76 @@
-
 <!DOCTYPE html>
 <html lang="zh-TW">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>六角部落格 | 我的第一個家</title>
+  <title>Lemon Tree | 個人部落格</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!-- 圖片來源：http://www.gratisography.com/#objects -->
   <style>
     .breadcrumb {
       background-color: transparent;
     }
+
     /* typography design */
     .text-primary {
-      color: #00cc99 !important;
+      color: #5c9c5f !important;
+      /* color: #00cc99 !important; */
     }
+
     .post {
       line-height: 1.8;
     }
   </style>
 </head>
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #00cc99;">
-    <a class="navbar-brand" href="/">
-      <i class="fa fa-diamond" aria-hidden="true"></i>
-      我的第一個家
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarSupportedContent"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-     
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      
-      <div class="navbar-nav ml-auto">
-        <% for(let prop in categories) { %>
-        <a class="nav-item nav-link <%if(id === categories[prop].path){%> active <% } %>" href="/archives/<%- categories[prop].path %>" ><%- categories[prop].name %> <span class="sr-only">(current)</span></a>
-        <% } %> 
-        </div>
-    </div>
-     
-  </nav>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5c9c5f;">
+  <a class="navbar-brand" href="/">
+    <i class="fa fa-diamond" aria-hidden="true"></i>
+    Lemon Tree
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-  <div class="banner">
-    <img src="https://picsum.photos/1300/300/?random=1" class="w-100">
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+    <div class="navbar-nav ml-auto">
+      <% for(let prop in categories) { %>
+        <a class="nav-item nav-link <%if(id === categories[prop].path){%> active <% } %>"
+          href="/archives/<%- categories[prop].path %>">
+          <%- categories[prop].name %> <span class="sr-only">(current)</span>
+        </a>
+        <% } %>
+    </div>
   </div>
-  
+
+</nav>
+
+<div class="banner">
+  <img src="/images/banner.jpg" alt="banner" class="w-100" height="300vh" style="object-fit: cover;">
+</div>
+
+<div class="container">
+
+  <%- content %>
+
+</div>
+<footer class="bg-light text-muted py-5">
   <div class="container">
-       
-    <%- content %>
-
+    <ul class="list-unstyled d-flex justify-content-between">
+      <li class="">© Copright 2021 LIAO CHIN WEI</li>
+      <!-- <li class="ml-auto"><a class="text-info mr-1" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a> <a class="text-info mr-1" href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a> <a href="" class="text-info"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> -->
+      <li> <a class="" href="/auth/signin"> 管理者登入 </a> </li>
   </div>
-  <footer class="bg-light text-muted py-5">
-    <div class="container">
-      <ul class="list-unstyled d-flex justify-content-between">
-        <li class="">© Copright 2020 六角部落格</li>
-        <!-- <li class="ml-auto"><a class="text-info mr-1" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a> <a class="text-info mr-1" href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a> <a href="" class="text-info"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> -->
-        <li> <a class="" href="/auth/signin"> 管理者登入 </a> </li>
-    </div>
-  </footer>
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+</footer>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </html>
